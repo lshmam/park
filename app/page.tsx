@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
 import { HowItWorks } from "@/components/how-it-works"
+import { WhyUseAptly } from "@/components/why-use-aptly"
 import { Calculator } from "@/components/calculator"
 import { CTA } from "@/components/cta"
 import { FAQ } from "@/components/faq"
@@ -13,8 +14,9 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
-      <HowItWorks />
+      {/* <HowItWorks /> */}
       {/* <Calculator /> */}
+      <WhyUseAptly />
       <CTA />
       <FAQ />
       <Footer />

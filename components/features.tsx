@@ -1,65 +1,107 @@
 "use client"
 
 import type React from "react"
-import { Shield, Smartphone, Calendar, CreditCard, MapPin, Users } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Smartphone, Calendar, MapPin, Users, MessageCircle } from "lucide-react"
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
 import { Button } from "@/components/ui/button"
+import Glow from "@/components/ui/glow"
+import Image from "next/image"
+
+// Carousel component for parking space images
+function ParkingCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const images = [
+    "/images/parking-1.png",
+    "/images/parking-2.png",
+    "/images/parking-3.png",
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [images.length])
+
+  return (
+    <div className="relative h-full w-full overflow-hidden rounded-lg">
+      {images.map((src, index) => (
+        <div
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+        >
+          <Image
+            src={src}
+            alt={`Parking space ${index + 1}`}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute top-2 left-2 rounded bg-yellow-400 px-2 py-1 text-xs font-bold text-slate-900">
+            ${15 + index * 5}.00/hour
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 const features = [
   {
-    Icon: MapPin,
-    name: "Find Nearby",
-    description: "Discover available parking spots in your area instantly with real-time availability.",
+    name: "Instantly find parking",
+    description: "Reserve verified spots at your destination in advance with digital payments, avoid tickets and damages, and skip the hassle of large parking lots & garages.",
     href: "#",
     cta: "Learn more",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20" />
+      <>
+        <Glow variant="center" />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20" />
+      </>
     ),
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    className: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
-    Icon: Calendar,
-    name: "Book Anytime",
-    description: "Reserve spots by the hour, day, or month with flexible scheduling.",
+    name: "Flexible spot management",
+    description: "Enjoy secure cashless payments and payouts, customizable reservations, and full control over your spot. Set your own rates, rules, and availability.",
     href: "#",
     cta: "Learn more",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20" />
+      <>
+        <Glow variant="center" />
+        <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20" />
+      </>
     ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
   },
   {
-    Icon: CreditCard,
-    name: "Easy Payments",
-    description: "Secure, cashless transactions every time with instant confirmations.",
+    name: "Community-driven",
+    description: "Access affordable eco-friendly parking, leave and read trusted reviews, and contribute to a sustainable urban environment.",
     href: "#",
     cta: "Learn more",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20" />
+      <>
+        <Glow variant="center" />
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-rose-500/20" />
+      </>
     ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3",
   },
   {
-    Icon: Shield,
-    name: "Fully Insured",
-    description: "Every booking protected with comprehensive coverage for peace of mind.",
+    name: "List your space",
+    description: "Effortlessly turn your unused space into passive income in under 5 minutes with Aptly. Your privacy is protected - addresses are shared only after confirmed reservations.",
     href: "#",
     cta: "Learn more",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20" />
+      <>
+        <Glow variant="center" />
+        <div className="absolute inset-0 overflow-hidden">
+          <ParkingCarousel />
+        </div>
+      </>
     ),
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-  },
-  {
-    Icon: Smartphone,
-    name: "Smart Access",
-    description: "Unlock gates and garages from your phone with seamless digital access.",
-    href: "#",
-    cta: "Learn more",
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-rose-500/20" />
-    ),
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+    className: "lg:col-start-2 lg:col-end-4 lg:row-start-2 lg:row-end-3",
   },
 ]
 
@@ -73,7 +115,7 @@ export function Features() {
             <p className="mt-2 text-slate-600">Parking made simple for drivers and hosts alike</p>
           </div>
 
-          <BentoGrid className="lg:grid-rows-3">
+          <BentoGrid className="lg:grid-rows-2">
             {features.map((feature) => (
               <BentoCard key={feature.name} {...feature} />
             ))}
@@ -89,9 +131,6 @@ export function Features() {
               <Button className="gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
                 Join Waitlist <ArrowRight className="h-4 w-4" />
               </Button>
-              {/* <Button variant="outline" className="gap-2 border-slate-300 text-slate-700 bg-transparent">
-                Learn More
-              </Button> */}
             </div>
           </div>
         </div>
