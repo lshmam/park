@@ -23,7 +23,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[25rem] grid-cols-3 gap-4",
         className
       )}
       {...props}
@@ -53,6 +53,7 @@ const BentoCard = ({
     {...props}
   >
     <div>{background}</div>
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/50 to-transparent dark:from-neutral-950 dark:via-neutral-950/50" />
     <div className="relative z-10 p-6">
       <h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-neutral-300">
         {name}

@@ -109,13 +109,13 @@ export function Features() {
   return (
     <section id="features" className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="rounded-3xl bg-white p-8 shadow-sm md:p-12">
+        <div className="rounded-3xl bg-white p-8 shadow-sm md:p-20">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Everything you need</h2>
             <p className="mt-2 text-slate-600">Parking made simple for drivers and hosts alike</p>
           </div>
 
-          <BentoGrid className="lg:grid-rows-2">
+          <BentoGrid>
             {features.map((feature) => (
               <BentoCard key={feature.name} {...feature} />
             ))}
