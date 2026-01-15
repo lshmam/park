@@ -1,4 +1,7 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
+import ScrollReveal from "@/components/ScrollReveal"
 import { ArrowRight, MapPin, Clock, DollarSign } from "lucide-react"
 
 export function Hero() {
@@ -96,12 +99,17 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Large text section */}
-        <div className="mx-auto mt-24 max-w-3xl text-center">
-          <p className="text-balance text-3xl font-bold leading-tight text-slate-900 md:text-5xl md:leading-tight">
-            The average driver spends 7–12 minutes per trip searching for parking. That’s 40+ hours a year for frequent drivers. <br />
-            <span className="text-indigo-600">Aptly is here to give you your time back.</span>
-          </p>
+        {/* Large text section with reveal animation */}
+        <div className="mx-auto mt-24 max-w-4xl py-24">
+          <ScrollReveal
+            enableBlur={false}
+            baseRotation={0}
+            baseOpacity={0.2}
+            containerClassName=""
+            textClassName="text-center text-3xl font-bold leading-tight text-slate-900 md:text-4xl lg:text-5xl lg:leading-tight"
+          >
+            The average driver spends 7–12 minutes per trip searching for parking. That's 40+ hours a year for frequent drivers. Aptly is here to give you your time back.
+          </ScrollReveal>
         </div>
       </div>
     </section>
