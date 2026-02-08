@@ -7,12 +7,9 @@ import { Calculator } from "@/components/calculator"
 import { CTA } from "@/components/cta"
 import { FAQ } from "@/components/faq"
 import { Footer } from "@/components/footer"
-import { PromoBanner } from "@/components/promo-banner"
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#E8E4F3]">
-      <PromoBanner />
       <Header />
       <Hero />
       <Features />

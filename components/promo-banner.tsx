@@ -9,7 +9,7 @@ export function PromoBanner() {
     if (!isVisible) return null
 
     return (
-        <div className="relative bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white">
+        <div className="relative z-[60] bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white shadow-sm">
             <div className="mx-auto max-w-7xl px-4 py-1.5">
                 <div className="flex items-center justify-center gap-2 text-sm font-medium">
                     <Gift className="h-4 w-4 animate-pulse" />
@@ -28,3 +28,6 @@ export function PromoBanner() {
         </div>
     )
 }
+
+// Export banner height for other components to use
+export const BANNER_HEIGHT = "32px"
