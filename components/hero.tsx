@@ -14,7 +14,7 @@ export function Hero() {
 
   return (
     <>
-      <section className="relative overflow-hidden px-4 py-16 md:py-24">
+      <section className="relative overflow-hidden px-4 pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="absolute inset-0 z-0">
           <Glow
             variant="above"
