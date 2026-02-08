@@ -32,7 +32,7 @@ const cards = [
 
 export function WhyUseAptly() {
     return (
-        <section className="px-4 py-24 md:py-32">
+        <section id="why-aptly" className="px-4 py-24 md:py-32">
             <div className="mx-auto max-w-5xl">
                 <div className="mb-16 text-center">
                     <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Why use Aptly?</h2>
@@ -69,7 +69,7 @@ function Card({
     return (
         <div
             className={cn(
-                "sticky mx-auto flex max-w-3xl flex-col gap-6 rounded-3xl border p-8 shadow-sm transition-all md:flex-row md:items-center md:p-12",
+                "sticky mx-auto flex max-w-5xl flex-col gap-6 rounded-3xl border p-8 shadow-sm transition-all md:flex-row md:items-center md:p-12",
                 color,
                 borderColor
             )}

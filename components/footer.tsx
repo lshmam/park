@@ -3,14 +3,15 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { WaitlistModal } from "@/components/waitlist-modal"
+import Link from "next/link"
 
 export function Footer() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
 
   return (
     <>
-      <footer className="px-4 py-16">
-        <div className="mx-auto max-w-7xl">
+      <footer className="px-4 pb-4 pt-16">
+        <div className="mx-auto w-full">
           <div className="grid gap-8 rounded-3xl bg-white p-8 shadow-sm md:grid-cols-3 md:p-12">
             <div>
               <div className="flex items-center gap-2">
@@ -26,6 +27,11 @@ export function Footer() {
                 hello@aptly.com
                 <br />© 2026 Aptly. All rights reserved.
               </p>
+              <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium text-slate-600">
+                <Link href="/about" className="hover:text-indigo-600">About</Link>
+                <Link href="/host" className="hover:text-indigo-600">Become a Host</Link>
+                <Link href="/how-it-works" className="hover:text-indigo-600">How it Works</Link>
+              </div>
             </div>
 
             <div className="flex items-center justify-center">

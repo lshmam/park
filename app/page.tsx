@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
-      {/* <HowItWorks /> */}
+      <HowItWorks />
       {/* <Calculator /> */}
       <WhyUseAptly />
       <CTA />
