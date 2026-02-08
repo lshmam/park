@@ -12,10 +12,10 @@ export default function Home() {
     <main className="min-h-screen bg-[#E8E4F3]">
       <Header />
       <Hero />
-      <Features />
       <HowItWorks />
+      <Features />
       {/* <Calculator /> */}
-      <WhyUseAptly />
+      {/* <WhyUseAptly /> */}
       <CTA />
       <FAQ />
       <Footer />
