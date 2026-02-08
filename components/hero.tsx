@@ -1,117 +1,99 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import ScrollReveal from "@/components/ScrollReveal"
 import { ArrowRight, MapPin, Clock, DollarSign } from "lucide-react"
+import Image from "next/image"
+import Glow from "@/components/ui/glow"
+import { ShinyButton } from "@/components/ui/shiny-button"
+import { WaitlistModal } from "@/components/waitlist-modal"
 
 export function Hero() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+
   return (
-    <section className="relative overflow-hidden px-4 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-balance text-4xl font-bold tracking-tight text-slate-900 md:text-6xl">
-            AirBnb for <span className="text-indigo-600">Parking</span>
-          </h1>
-          <p className="mt-4 text-lg text-slate-600 md:text-xl">Find and rent parking spots from your neighbors</p>
-
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button className="gap-2 bg-indigo-600 px-6 py-6 text-base hover:bg-indigo-700 text-white">
-              Join the Waitlist <ArrowRight className="h-4 w-4" />
-            </Button>
-            {/* <Button variant="outline" className="gap-2 border-slate-300 bg-white/80 px-6 py-6 text-base text-slate-700">
-              Learn More
-            </Button> */}
-          </div>
+    <>
+      <section className="relative overflow-hidden px-4 py-16 md:py-24">
+        <div className="absolute inset-0 z-0">
+          <Glow
+            variant="above"
+            className="animate-none opacity-100 [&>div]:from-indigo-600/40 [&>div]:to-indigo-600/0 [&>div]:opacity-100"
+          />
         </div>
+        <div className="mx-auto max-w-7xl relative z-10">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="text-balance text-4xl font-medium tracking-[-1px] text-white md:text-[80px] md:leading-[81.6px] font-sans">
+              The Smarter Way to <span className="text-indigo-800">Park</span>
+            </h1>
+            <p className="mt-4 text-lg text-white md:text-xl">Instant access to private driveways and garages at a fraction of the cost</p>
 
-        <div className="relative mt-16 flex items-center justify-center">
-          <div className="relative">
-            {/* Phone mockup */}
-            <div className="relative z-10 mx-auto w-[280px] rounded-[3rem] border-[8px] border-slate-800 bg-slate-800 p-2 shadow-2xl">
-              <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-xl bg-slate-800" />
-              <div className="h-[500px] overflow-hidden rounded-[2.5rem] bg-white">
-                <div className="bg-indigo-600 px-4 py-6 text-white">
-                  <p className="text-sm opacity-80">Welcome back</p>
-                  <p className="text-2xl font-bold">$847</p>
-                  <p className="text-sm opacity-80">Total Earnings</p>
-                </div>
-                <div className="p-4">
-                  <div className="mb-4 rounded-xl bg-slate-50 p-4">
-                    <p className="text-sm font-medium text-slate-900">Active Listings</p>
-                    <p className="text-2xl font-bold text-indigo-600">3</p>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 rounded-lg bg-slate-50 p-3">
-                      <div className="h-10 w-10 rounded-lg bg-indigo-100" />
-                      <div>
-                        <p className="text-sm font-medium text-slate-900">Downtown Spot</p>
-                        <p className="text-xs text-slate-500">$15/hour</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 rounded-lg bg-slate-50 p-3">
-                      <div className="h-10 w-10 rounded-lg bg-indigo-100" />
-                      <div>
-                        <p className="text-sm font-medium text-slate-900">Home Driveway</p>
-                        <p className="text-xs text-slate-500">$8/hour</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating cards */}
-            <div className="absolute -left-4 top-12 z-20 rounded-2xl bg-white p-4 shadow-lg md:-left-24">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
-                  <DollarSign className="h-5 w-5 text-green-600" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">New Booking</p>
-                  <p className="text-lg font-bold text-slate-900">+$45</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -right-4 top-32 z-20 rounded-2xl bg-white p-4 shadow-lg md:-right-28">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100">
-                  <MapPin className="h-5 w-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">Spots Near You</p>
-                  <p className="text-lg font-bold text-slate-900">24</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -left-8 bottom-24 z-20 rounded-2xl bg-white p-4 shadow-lg md:-left-32">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100">
-                  <Clock className="h-5 w-5 text-orange-600" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">Avg. Book Time</p>
-                  <p className="text-lg font-bold text-slate-900">2 min</p>
-                </div>
-              </div>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <ShinyButton
+                className="group relative gap-2 overflow-hidden rounded-xl border-none bg-gradient-to-b from-indigo-500 to-indigo-700 px-8 py-4 text-base font-semibold text-white shadow-[0px_1px_4px_0px_rgba(255,255,255,0.3)_inset,0px_-2px_4px_0px_rgba(0,0,0,0.2)_inset,0px_4px_20px_0px_rgba(67,56,202,0.5)] transition-all hover:from-indigo-400 hover:to-indigo-600"
+                onClick={() => setIsWaitlistOpen(true)}
+              >
+                <span className="relative z-10 flex items-center gap-2 text-white">
+                  Join the Waitlist <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </ShinyButton>
             </div>
           </div>
-        </div>
 
-        {/* Large text section with reveal animation */}
-        <div className="mx-auto mt-24 max-w-4xl py-24">
-          <ScrollReveal
-            enableBlur={false}
-            baseRotation={0}
-            baseOpacity={0.2}
-            containerClassName=""
-            textClassName="text-center text-3xl font-bold leading-tight text-slate-900 md:text-4xl lg:text-5xl lg:leading-tight"
-          >
-            The average driver spends 7–12 minutes per trip searching for parking. That's 40+ hours a year for frequent drivers. Aptly is here to give you your time back.
-          </ScrollReveal>
+          <div className="relative mt-16 flex items-center justify-center [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+            <div className="relative">
+              {/* Phone mockup */}
+              {/* Phone mockup */}
+              <div className="relative z-10 mx-auto w-[280px]">
+                <Image
+                  src="/images/park-mockup-1.png"
+                  alt="App Mockup"
+                  width={280}
+                  height={580}
+                  className="rounded-[3rem] shadow-2xl"
+                  priority
+                />
+              </div>
+
+              {/* Secondary mockups */}
+              <div className="absolute -left-12 top-12 z-0 w-[240px] opacity-50 lg:-left-20">
+                <Image
+                  src="/images/park-mockup-2.png"
+                  alt="App Mockup Left"
+                  width={240}
+                  height={500}
+                  className="rounded-[3rem] shadow-xl transition-all duration-500 hover:opacity-100"
+                />
+              </div>
+              <div className="absolute -right-12 top-12 z-0 w-[240px] opacity-50 lg:-right-20">
+                <Image
+                  src="/images/park-mockup-3.png"
+                  alt="App Mockup Right"
+                  width={240}
+                  height={500}
+                  className="rounded-[3rem] shadow-xl transition-all duration-500 hover:opacity-100"
+                />
+              </div>
+
+            </div>
+          </div>
+
+          {/* Large text section with reveal animation */}
+          <div className="mx-auto mt-24 max-w-4xl py-24">
+            <ScrollReveal
+              enableBlur={false}
+              baseRotation={0}
+              baseOpacity={0.2}
+              containerClassName=""
+              textClassName="text-center text-3xl font-bold leading-tight text-slate-900 md:text-4xl lg:text-5xl lg:leading-tight"
+            >
+              The average driver spends 7–12 minutes per trip searching for parking. That's 40+ hours a year for frequent drivers. Aptly is here to give you your time back.
+            </ScrollReveal>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+    </>
   )
 }

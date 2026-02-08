@@ -7,6 +7,7 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
 import { Button } from "@/components/ui/button"
 import Glow from "@/components/ui/glow"
 import Image from "next/image"
+import { WaitlistModal } from "@/components/waitlist-modal"
 
 // Carousel component for parking space images
 function ParkingCarousel() {
@@ -106,36 +107,45 @@ const features = [
 ]
 
 export function Features() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+
   return (
-    <section id="features" className="px-4 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="rounded-3xl bg-white p-8 shadow-sm md:p-20">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Everything you need</h2>
-            <p className="mt-2 text-slate-600">Parking made simple for drivers and hosts alike</p>
-          </div>
+    <>
+      <section id="features" className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-3xl bg-white p-8 shadow-sm md:p-20">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Everything you need</h2>
+              <p className="mt-2 text-slate-600">Parking made simple for drivers and hosts alike</p>
+            </div>
 
-          <BentoGrid>
-            {features.map((feature) => (
-              <BentoCard key={feature.name} {...feature} />
-            ))}
-          </BentoGrid>
+            <BentoGrid>
+              {features.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
+              ))}
+            </BentoGrid>
 
-          <div className="mt-12 text-center">
-            <h3 className="text-balance text-2xl font-bold text-slate-900 md:text-3xl">
-              Turn your empty driveway into
-              <br />
-              passive income
-            </h3>
-            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button className="gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
-                Join Waitlist <ArrowRight className="h-4 w-4" />
-              </Button>
+            <div className="mt-12 text-center">
+              <h3 className="text-balance text-2xl font-bold text-slate-900 md:text-3xl">
+                Turn your empty driveway into
+                <br />
+                passive income
+              </h3>
+              <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button
+                  className="gap-2 bg-indigo-600 hover:bg-indigo-700 text-white"
+                  onClick={() => setIsWaitlistOpen(true)}
+                >
+                  Join Waitlist <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+    </>
   )
 }
 

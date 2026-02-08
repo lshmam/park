@@ -1,8 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { EB_Garamond } from "next/font/google"
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-eb-garamond",
+})
 
 const sfPro = localFont({
   src: "../public/SF-Pro.ttf",
@@ -39,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sfPro.variable} font-sans antialiased tracking-tight`}>
+      <body className={`${sfPro.variable} ${ebGaramond.variable} font-sans antialiased tracking-tight`}>
         {children}
         <Analytics />
       </body>
